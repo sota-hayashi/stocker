@@ -174,7 +174,7 @@ export default function InventoryPage() {
                 }}
               >
                 <span style={{ fontSize: '14px', color: '#333' }}>
-                  {item.ingredient?.name ?? item.name}：{item.quantity} {item.ingredient?.unit ?? item.unit}
+                  {item.ingredient?.name}：{item.quantity} {item.ingredient?.unit}
                 </span>
                 <button
                   onClick={() => handleDelete(item.id)}

@@ -100,10 +100,10 @@ export default function RecipeDetailPage() {
               }}
             >
               <span style={{ fontSize: '14px', color: '#333' }}>
-                {ri.ingredient?.name ?? ri.name}
+                {ri.ingredient?.name}
               </span>
               <span style={{ fontSize: '14px', color: '#555', textAlign: 'right' }}>
-                {ri.quantity_per_serving} {ri.ingredient?.unit ?? ri.unit}
+                {ri.quantity_per_serving} {ri.ingredient?.unit}
               </span>
               <span style={{ fontSize: '14px', color: '#333', textAlign: 'right' }}>
                 {ri.quantity_per_serving * servings} {ri.ingredient?.unit}
