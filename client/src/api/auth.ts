@@ -1,4 +1,4 @@
-const BASE = '/api/auth'
+const BASE = `${import.meta.env.VITE_API_URL}/api/auth`
 
 export async function register(email: string, password: string): Promise<{ token: string }> {
   const res = await fetch(`${BASE}/register`, {

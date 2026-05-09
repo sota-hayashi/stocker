@@ -1,6 +1,6 @@
 import { Ingredient, RecipeWithIngredients } from '../types'
 
-const BASE = '/api/admin'
+const BASE = `${import.meta.env.VITE_API_URL}/api/admin`
 
 function headers(token: string) {
   return { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }

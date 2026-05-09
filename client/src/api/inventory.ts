@@ -1,6 +1,6 @@
 import { InventoryItem } from '../types'
 
-const BASE = '/api/inventory'
+const BASE = `${import.meta.env.VITE_API_URL}/api/inventory`
 
 function headers(token: string) {
   return { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }
