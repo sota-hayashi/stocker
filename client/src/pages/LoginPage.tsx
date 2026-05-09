@@ -91,7 +91,7 @@ export default function LoginPage() {
       {/* ログイン・新規登録ボタン：横並び */}
       <div style={{ display: 'flex', gap: '8px' }}>
         <button
-          onClick={handleSubmit}
+          onClick={isRegister ? () => setIsRegister(false) : handleSubmit}
           style={{
             flex: 1,
             padding: '8px 0',
@@ -106,7 +106,7 @@ export default function LoginPage() {
           ログイン
         </button>
         <button
-          onClick={() => setIsRegister(v => !v)}
+          onClick={isRegister ? handleSubmit : () => setIsRegister(true)}
           style={{
             flex: 1,
             padding: '8px 0',
