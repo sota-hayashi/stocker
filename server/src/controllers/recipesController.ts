@@ -78,10 +78,14 @@ export async function cookRecipe(req: Request, res: Response) {
   for (const ri of ingredientsResult.rows as { ingredient_id: string; quantity_per_serving: number }[]) {
     const used = ri.quantity_per_serving * servings
     await db.query(
-      'UPDATE inventory SET quantity = quantity - $1, updated_at = NOW() WHERE ingredient_id = $2',
+      `UPDATE inventory SET quantity = quantity - $1, updated_at = NOW()
+      WHERE ingredient_id = $2 AND quantity - $1 > 0`,
       [used, ri.ingredient_id]
     )
-    await db.query('DELETE FROM inventory WHERE ingredient_id = $1 AND quantity <= 0', [ri.ingredient_id])
+    await db.query(
+      'DELETE FROM inventory WHERE ingredient_id = $1 AND quantity - $2 <= 0',
+      [ri.ingredient_id, used]
+    )
   }
 
   res.status(204).send()
